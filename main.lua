@@ -115,15 +115,13 @@ KEY_CHANNEL_INC = "="
 KEY_CHANNEL_DEC = "-"
 KEY_MAKE_CUTS = "0"
 
+mp.msg.info(mp.command_native({"expand-path", "~/.config/mpv-cut/config.lua"}))
 if pcall(require, "config") then
     mp.msg.info("Loaded config module.")
+elseif pcall(dofile, mp.command_native({"expand-path", "~/.config/mpv-cut/config.lua"})) then
+    mp.msg.info("Loaded config from dotfile.")
 else
-    dot_config_file = os.getenv( "HOME" ) .. "/.mpv-cut.config.lua"
-    if pcall(dofile, dot_config_file) then
-        mp.msg.info("Loaded config from dotfile.")
-    else
-        mp.msg.info("Starting with default config.")
-    end
+    mp.msg.info("No config loaded.")
 end
 
 mp.msg.info("MPV-CUT LOADED.")
