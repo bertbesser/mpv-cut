@@ -124,6 +124,7 @@ else
     mp.msg.info("No config loaded.")
 end
 
+
 mp.msg.info("MPV-CUT LOADED.")
 
 for i, v in ipairs(CHANNEL_NAMES) do
