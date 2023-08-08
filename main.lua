@@ -119,7 +119,7 @@ config_file = tostring(mp.command_native({"expand-path", "~/.config/mpv-cut/conf
 mp.msg.info(config_file)
 if pcall(require, "config") then
     mp.msg.info("Loaded config module.")
-elseif pcall(require, config_file) then
+elseif pcall(dofile, config_file) then
     mp.msg.info("Loaded config file " .. config_file .. ".")
 else
     mp.msg.info("No config loaded.")
